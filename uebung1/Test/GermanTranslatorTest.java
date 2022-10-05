@@ -2,10 +2,13 @@ package org.hbrs.s1.ws22.uebung1.Test;
 
 import org.hbrs.s1.ws22.uebung1.control.Communication;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class GermanTranslatorTest {
     String fehler(int fehlerZahl){
-     return "Uebersetzung der Zahl " + fehlerZahl + " nicht moeglich, Interface Version 1.0";
+        return "Uebersetzung der Zahl " + fehlerZahl + " nicht moeglich, Interface Version 1.0";
     }
 
     int numArr[] = {-5, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 200};

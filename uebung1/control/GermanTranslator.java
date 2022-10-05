@@ -9,7 +9,7 @@ public class GermanTranslator implements Translator {
 	 */
 	public String translateNumber( int number ) {
 		// [ihr Source Code aus Übung 1-2]
-		String fehler = "Uebersetzung der Zahl [" + number + "] nicht möglich " + Translator.version; // es soll die Versionsnummer des Interface ausgegeben werden
+		String fehler = "Uebersetzung der Zahl " + number + " nicht moeglich, " + "Interface Version " + Translator.version; // es soll die Versionsnummer des Interface ausgegeben werden
 		//Loesung mit TryCatch um den Anforderungen der Aufgabenstellung zu entsprechen
 		try {
 			String trans[] = {fehler, "eins", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun", "zehn", fehler};
