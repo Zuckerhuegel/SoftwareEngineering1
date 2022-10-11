@@ -1,5 +1,5 @@
 # SoftwareEngineering1
-Abgaben zu Software Engineering 1 
+Abgaben zu Software Engineering 1 \n
 Autoren dieses Repositorys: 
 - Fabius Schmitz
 - Tim Schulz
