@@ -26,6 +26,8 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
         try {
             fileOut = new FileOutputStream(location);
             objectOut = new ObjectOutputStream(fileOut);
+            fileStream = new FileInputStream(location);
+            objStream = new ObjectInputStream(fileStream);
         } catch (FileNotFoundException e) {
             e.getMessage();
         } catch (IOException e) {
@@ -41,7 +43,9 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
     public void closeConnection() throws PersistenceException {
         try {
             objectOut.close();
-            //objStream.close();
+            fileOut.close();
+            fileStream.close();
+            objStream.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -56,10 +60,11 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
         openConnection();
         try {
             objectOut.writeObject(member);
+            closeConnection();
         } catch (IOException E) {
             E.getStackTrace();
         }
-        closeConnection();
+
     }
 
     @Override
@@ -71,12 +76,8 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
     public List<E> load() throws PersistenceException  {
         List<E> memberListe = null;
         openConnection();
-       try{
-           fileStream = new FileInputStream(location);
-           objStream = new ObjectInputStream(fileStream);
-       }catch (IOException e) {
-           throw new RuntimeException(e);
-       }
+
+
         try {
             memberListe = (List<E>) objStream.readObject();
         } catch (IOException e) {
