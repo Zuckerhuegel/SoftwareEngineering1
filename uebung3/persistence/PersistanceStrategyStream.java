@@ -60,12 +60,18 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
         openConnection();
         try {
             objectOut.writeObject(member);
-            closeConnection();
-        } catch (IOException E) {
-            E.getStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                closeConnection();
+            } catch (PersistenceException e) {
+                e.printStackTrace();
+            }
         }
 
     }
+
 
     @Override
     /**
