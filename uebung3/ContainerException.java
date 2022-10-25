@@ -10,6 +10,6 @@ public class ContainerException extends Exception{
      * @param id ID, die bereits im Container ist
      */
     public ContainerException(Integer id) {
-        super("Das Member-Objekt mit der ID" + id + "ist bereits vorhanden");
+        super("Das Member-Objekt mit der ID " + id + " ist bereits vorhanden");
     }
 }

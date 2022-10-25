@@ -3,6 +3,8 @@ package org.hbrs.s1.ws22.uebung3;
 /**
  * Konkreter Memberklasse, um das Interface Member nutzen zu können
  */
+
+//bitte töte mich nicht
 public class ConcreteMember implements Member{
     private Integer id;     //id des Members
 

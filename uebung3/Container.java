@@ -1,10 +1,36 @@
 package org.hbrs.s1.ws22.uebung3;
 
+import org.hbrs.s1.ws22.uebung3.persistence.PersistenceException;
+import org.hbrs.s1.ws22.uebung3.persistence.PersistenceStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Container {
-    private List<Member> members = new ArrayList<>();
+    private List<Member> members = new ArrayList<>();       //Speichert die Member
+    private static Container instance = null;
+
+    PersistenceStrategy pers = null; //Kontrolle gemäß des Singleton Patterns
+
+    public void setPers(PersistenceStrategy pers) {
+        this.pers = pers;
+    }
+
+    /**
+     * Singleton Pattern
+     * @return Instanz vom Typ Container, entweder eine neue, falls es noch keine gibt, oder dieselbe nochmal
+     */
+    public static Container getInstance() {
+        if(instance  == null) {
+            instance = new Container();
+        }
+        return instance;
+    }
+
+    /**
+     * Privater Konstruktor um zu verhindern, dass neue Container erzeugt werden
+     */
+    private Container() {}
 
     /**
      * fügt einen neuen Member zum Container hinzu, falls kein Member mit der selben ID vorhanden ist
@@ -69,4 +95,16 @@ public class Container {
     public int size() {
         return members.size();
     }
+
+    public void store(List<Member> currentList) throws PersistenceException {
+        pers.save(members);
+    }
+    public void load() throws PersistenceException{
+        members = pers.load();
+    }
+
+    public List<Member> getCurrentList () {
+        return this.members;
+    }
+
 }
