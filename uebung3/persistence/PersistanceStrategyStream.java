@@ -87,12 +87,19 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
         try {
             memberListe = (List<E>) objStream.readObject();
         } catch (IOException e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+                closeConnection();
+            } catch (PersistenceException e) {
+                e.printStackTrace();
+            }
         }
-        closeConnection();
         return memberListe;
+    }
+
 
 
 
@@ -117,4 +124,4 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
         // and finally close the streams (guess where this could be...?)
 
     }
-}
+
