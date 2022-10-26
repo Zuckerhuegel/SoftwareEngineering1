@@ -59,15 +59,11 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
     public void save(List<E> member) throws PersistenceException {
         openConnection();
         try {
+            //shoud save the list of members
             objectOut.writeObject(member);
+            objectOut.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
-            try {
-                closeConnection();
-            } catch (PersistenceException e) {
-                e.printStackTrace();
-            }
         }
 
     }
@@ -81,7 +77,7 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
      */
     public List<E> load() throws PersistenceException  {
         List<E> memberListe = null;
-        openConnection();
+
 
 
         try {
@@ -90,14 +86,10 @@ public class PersistanceStrategyStream<E> implements PersistenceStrategy<E> {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
-        }finally {
-            try {
-                closeConnection();
-            } catch (PersistenceException e) {
-                e.printStackTrace();
-            }
         }
+       closeConnection();
         return memberListe;
+
     }
 
 

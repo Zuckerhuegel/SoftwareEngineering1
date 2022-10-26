@@ -19,4 +19,6 @@ import java.util.List;
         public void closeConnection() throws PersistenceException;
         public void save(List<E> member) throws PersistenceException;
         public List<E> load() throws PersistenceException;
-}
+
+        void setLocation(String location);
+    }

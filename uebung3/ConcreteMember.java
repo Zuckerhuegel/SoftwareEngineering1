@@ -1,11 +1,13 @@
 package org.hbrs.s1.ws22.uebung3;
 
+import java.io.Serializable;
+
 /**
  * Konkreter Memberklasse, um das Interface Member nutzen zu können
  */
 
 //bitte töte mich nicht
-public class ConcreteMember implements Member{
+public class ConcreteMember implements Member, Serializable {
     private Integer id;     //id des Members
 
     /**

@@ -107,4 +107,10 @@ public class Container {
         return this.members;
     }
 
+    public void setLocation(String location) {
+        pers.setLocation(location);
+    }
+
+
+
 }
