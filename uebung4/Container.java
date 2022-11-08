@@ -11,7 +11,7 @@ public class Container {
     private List<Member> members = new ArrayList<>();       //Speichert die Member
     private static Container instance = null;
 
-    PersistenceStrategy pers = null; //Kontrolle gemäß des Singleton Patterns
+    public PersistenceStrategy pers = null; //Kontrolle gemäß des Singleton Patterns
 
     public void setPers(PersistenceStrategy pers) {
         this.pers = pers;

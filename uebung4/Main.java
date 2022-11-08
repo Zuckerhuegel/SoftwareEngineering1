@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public class Main {
     static int savings = 0; //gibt an, ob bereits gespeichert wurde
     static Container c = Container.getInstance();   //Container
-    static PersistenceStrategy PS = new PersistanceStrategyStream();    //persistent Abspeichern
+    static PersistenceStrategy PS = new PersistanceStrategyStream();   //persistent Abspeichern
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);    //scanner
