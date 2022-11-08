@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
+    //Ertsmall muss ein Container und Mitarbeiter für die Tests erstellt werden
     static int savings = 0; //gibt an, ob bereits gespeichert wurde
     static Container c = Container.getInstance();   //Container
     static PersistenceStrategy PS = new PersistanceStrategyStream();
@@ -30,17 +31,25 @@ class MainTest {
         //Hinzufügen der Mitarbeiter
         c.addMember(mitarbeiter);
         c.addMember(mitarbeiter2);
+        //Persistentes speichern der Mitarbeter
         try {
             c.store(c.getCurrentList());
         } catch (PersistenceException e) {
             throw new RuntimeException(e);
         }
+        //Löschen von zwei Mitarbeitern
         c.deleteMember(1);
         c.deleteMember(2);
+        //Prüfen ob die Mitarbeiter gelöscht wurden
         assertEquals(0, c.getCurrentList().size());
+        //Mitarbeiter3 erstellen und hinzfügen
         mitarbeiter3 = new Mitarbeiter(3, "Felix", "Hase", "Testrolle", "Testabteilung");
         c.addMember(mitarbeiter3);
         assertEquals(1, c.getCurrentList().size());
+        /*
+        Merge durchführen Nun sollten die Mitarbeiter1 und 2 wieder vorhanden sein
+        Mitarbeiter 3 sollt auch noch in der Liste stehen
+         */
         try {
             List<Member> saved = (List<Member>) PS.load();
             for(Member m : saved) {
@@ -51,6 +60,7 @@ class MainTest {
         } catch (ContainerException e) {
             e.getMessage();
         }
+        //Prüfen ob alle Mitarbeiter wieder vorhanden sind
         assertEquals(3, c.getCurrentList().size());
     }
 }
