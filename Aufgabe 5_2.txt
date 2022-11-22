@@ -1,0 +1,24 @@
+a)
+Die User-Story ist unnötig komplex, da sie gleich zwei Funktionen beinhaltet. Es wäre besser gewesen wenn sie in zwei Teile aufteilt, welche wie folgt aussehen:
+	Als Student möchte ich mich auf eine Stellenanzeige bewerben.
+	Als Student möchte ich nach Stellenanzeigen suchen.
+
+b)
+Der Student muss nun ebenfalls mit den Stellenangaben interagieren können, da dieser (der Student/ die Studentin) nun nach diesen suchen und sich darauf bewerben kann.
+Das bedeutet, dass eine Verbindung zwichen dem Studenten und dem Stellenangebot bestehen muss.
+
+c)
+Textueller Use-Case:
+
+	Name des Use-Cases:	Stellenanzeige suchen
+	Teilnehmende Akteure:	Anwender, Unternehmer
+	Ereignisfluss:		1. Anwender gibt Suchbegriff in die Suchmaske ein
+					2. System empfängt die Suchanfrage und bearbeitet diese
+					3. System schickt die Ergebnisse zurück an den Studenten
+				4. Anwender navigiert sich durch die Suchergebnisse
+	
+	Vorbedingung:		Anwender ist registrierter Student, Anwender ist als Student eingeloggt, Anwender hat die "Suchmaske" geöffnet
+	Nachbedingung:		Anwender sieht die Ergebnisse 
+	Qualitätsanforderung:	Das Anzeigen von Ergebnissen soll nicht länger als 5 Sekunden dauern
+
+
